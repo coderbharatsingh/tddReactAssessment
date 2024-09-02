@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
+import CalculatedData from '../utils/CalculatedData';
 
 export default function Home() {
   return (
@@ -11,8 +12,45 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main}`}>
-        <h1>Home</h1>
-        <div>Basic Layout</div>
+        <h1>String Calculator</h1>
+        <ul>
+          <li>Sum of comma-separated numbers:
+            <ol>
+              <li>Blank String: <CalculatedData/></li>
+              <li>Comma Separated Numbers(3,8): <CalculatedData data="3,8" /></li>
+            </ol>
+          </li>
+          <li>Sum of long amount of comma-separated numbers:
+            <ol>
+              <li>Comma Separated long Numbers(1,3,5,7,11,13): <CalculatedData data="1,3,5,7,11,13" /></li>
+              <li>Comma Separated long Numbers(0,3,32,12,111,456,232,2,11,67,3,93,54,75,88,43,88,100,23,21,55): <CalculatedData data="0,3,32,12,111,456,232,2,11,67,3,93,54,75,88,43,88,100,23,21,55" /></li>
+            </ol>
+          </li>
+          <li>Sum of new line numbers:
+            <ol>
+              <li>New line and Comma Separated Numbers(1\n2,3): <CalculatedData data={"1\n2,3"} /></li>
+              <li>New line and Comma Separated Numbers(4\n8,7\n1\n6): <CalculatedData data={"4\n8,7\n1\n6"} /></li>
+            </ol>
+          </li>
+          <li>Sum for Custom Delimiter numbers:
+            <ol>
+              <li>Custom Delimiter (`;`) define with new line Separated Numbers(//;\n1;2): <CalculatedData data={"//;\n1;2"} /></li>
+              <li>Custom Delimiter (`$`) define with new line Separated Numbers(//$\n34$21$12): <CalculatedData data={"//$\n34$21$12"} /></li>
+            </ol>
+          </li>
+          <li>Error with sum of negative number:
+            <ol>
+              <li>Negative Number(-2): <CalculatedData data="-2" /></li>
+              <li>Both(Negative and Positive) Numbers(4,1,-11,3): <CalculatedData data="4,1,-11,3" /></li>
+            </ol>
+          </li>
+          <li>Error with sum of multiple negative numbers:
+            <ol>
+              <li>Negative Numbers(-5,-11): <CalculatedData data="-5,-11" /></li>
+              <li>Both(Negative and Positive) Numbers(1,5,-4,11,-7,23): <CalculatedData data="1,5,-4,11,-7,23" /></li>
+            </ol>
+          </li>
+        </ul>
       </main>
     </>
   );

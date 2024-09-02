@@ -1,4 +1,4 @@
-function add(numbers: string): number {
+function add(numbers: string, returnErrorMessage: boolean = false): string | number {
     let delimiter: string = ',';
     if(numbers.startsWith('//')) {
         const delimiterIndex: number = numbers.indexOf('\n');
@@ -19,7 +19,11 @@ function add(numbers: string): number {
     }
 
     if(negativeNumbers.length) {
-        throw new Error(`negative numbers not allowed ${negativeNumbers.join(',')}`)
+        const errMessage = `negative numbers not allowed ${negativeNumbers.join(',')}`;
+        if(returnErrorMessage) {
+            return errMessage;
+        }
+        throw new Error(errMessage);
     }
 
     return sum;
